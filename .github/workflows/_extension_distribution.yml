@@ -373,4 +373,4 @@ jobs:
         with:
           name: ${{ inputs.extension_name }}-${{ inputs.duckdb_version }}-extension-${{matrix.duckdb_arch}}${{inputs.artifact_postfix}}
           path: |
-            build/${{ matrix.duckdb_arch }}/extension/${{ inputs.extension_name }}.duckdb_extension.wasm
+            build/${{ matrix.duckdb_arch }}/repository/*/${{ inputs.extension_name }}.duckdb_extension.wasm
