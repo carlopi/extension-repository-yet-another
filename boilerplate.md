@@ -1,8 +1,8 @@
 ## Experimental extension repository by carlopi
 
-Repo: (https://github.com/carlopi/extension-template-fork)
+[GitHub Repository: https://github.com/carlopi/extension-template-fork](https://github.com/carlopi/extension-template-fork)
 
-Endpoint: (https://carlopi.github.io/extension-template-fork/)
+[Endpoint: https://carlopi.github.io/extension-template-fork/](https://carlopi.github.io/extension-template-fork/)
 
 ### How to:
 ```bash
