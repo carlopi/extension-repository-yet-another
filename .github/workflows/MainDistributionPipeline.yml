@@ -13,6 +13,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/main' || github.sha }}
   cancel-in-progress: true
 
+env:
+    EXTENSIONS: "quack"
+
 jobs:
   duckdb-stable-build:
     name: Build extension binaries
@@ -48,7 +51,7 @@ jobs:
           brew install duckdb
           cd pages
           cat ../main/boilerplate.md > README.md
-          ../main/scripts/generated_docs_readme.sh >> README.md
+          ../main/scripts/generated_docs_readme.sh ${EXTENSIONS} >> README.md
           git config --global user.name 'Carlo Piovesan'
           git config --global user.email 'carlopi@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
