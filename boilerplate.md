@@ -1,4 +1,4 @@
-## Experimental extension repository by carlopi
+## Very Experimental Extension Repository
 
 GitHub Repository: [https://github.com/carlopi/extension-template-fork](https://github.com/carlopi/extension-template-fork)
 
