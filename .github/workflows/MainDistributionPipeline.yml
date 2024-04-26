@@ -30,24 +30,25 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: 'gh-pages'
+          path: pages
 
       - uses: actions/checkout@v4
         with:
           ref: 'main'
-          path: build
+          path: main
 
       - uses: actions/download-artifact@v4
         with:
           pattern: extension_repository*
-          path: build
+          path: extensions
 
       - name: Commit report
         run: |
-          rsync -a build/extension_repository*/* .
+          rsync -a extensions/extension_repository*/* pages/.
           brew install duckdb
-          cat build/boilerplate.md > README.md
-          ./build/scripts/generated_docs_readme.sh >> README.md
-          git rm -r build
+          cd pages
+          cat ../main/boilerplate.md > README.md
+          ../main/scripts/generated_docs_readme.sh >> README.md
           git config --global user.name 'Carlo Piovesan'
           git config --global user.email 'carlopi@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
