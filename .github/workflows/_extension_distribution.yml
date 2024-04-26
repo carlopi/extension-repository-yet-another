@@ -183,6 +183,17 @@ jobs:
           name: ${{ inputs.extension_name }}-${{ inputs.duckdb_version }}-extension-${{matrix.duckdb_arch}}${{inputs.artifact_postfix}}
           path: |
             build/release/extension/${{ inputs.extension_name }}/${{ inputs.extension_name }}.duckdb_extension
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ inputs.extension_name }}-${{ inputs.duckdb_version }}-extension-${{matrix.duckdb_arch}}${{inputs.artifact_postfix}}
+          path: |
+            build/release/extension/${{ inputs.extension_name }}/${{ inputs.extension_name }}.duckdb_extension
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: extension_repository-${{ inputs.extension_name }}-${{ inputs.duckdb_version }}-extension-${{matrix.duckdb_arch}}}
+          path: |
+            build/release/repository/
 
   macos:
     name: MacOS
@@ -247,6 +258,12 @@ jobs:
           name: ${{ inputs.extension_name }}-${{ inputs.duckdb_version }}-extension-${{matrix.duckdb_arch}}${{inputs.artifact_postfix}}
           path: |
             build/release/extension/${{ inputs.extension_name }}/${{ inputs.extension_name }}.duckdb_extension
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: extension_repository-${{ inputs.extension_name }}-${{ inputs.duckdb_version }}-extension-${{matrix.duckdb_arch}}}
+          path: |
+            build/release/repository/
 
   windows:
     name: Windows
@@ -326,6 +343,12 @@ jobs:
           path: |
             build/release/extension/${{ inputs.extension_name }}/${{ inputs.extension_name }}.duckdb_extension
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: extension_repository-${{ inputs.extension_name }}-${{ inputs.duckdb_version }}-extension-${{matrix.duckdb_arch}}}
+          path: |
+            build/release/repository/
+
   wasm:
     name: DuckDB-Wasm
     runs-on: ubuntu-latest
@@ -374,3 +397,9 @@ jobs:
           name: ${{ inputs.extension_name }}-${{ inputs.duckdb_version }}-extension-${{matrix.duckdb_arch}}${{inputs.artifact_postfix}}
           path: |
             build/${{ matrix.duckdb_arch }}/extension/${{ inputs.extension_name }}/${{ inputs.extension_name }}.duckdb_extension.wasm
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: extension_repository-${{ inputs.extension_name }}-${{ inputs.duckdb_version }}-extension-${{matrix.duckdb_arch}}}
+          path: |
+            build/${{matrix.duckdb_arch}}/repository/
