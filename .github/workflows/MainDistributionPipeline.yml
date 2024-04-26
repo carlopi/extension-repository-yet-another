@@ -5,6 +5,7 @@ name: Main Extension Distribution Pipeline
 permissions:
   contents: write
   id-token: write
+  pages: write
 on:
   push:
   pull_request:
