@@ -77,10 +77,9 @@ jobs:
           git commit --amend --no-edit
           git push -f
 
-      - uses: actions/upload-pages-artifact@v1
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: pages/
-          name: github-pages
 
       - id: deployment
         uses: actions/deploy-pages@main
