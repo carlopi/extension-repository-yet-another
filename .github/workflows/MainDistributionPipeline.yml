@@ -32,13 +32,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 'gh-pages'
-          path: pages
+          ref: 'main'
+          path: main
+
+      - name: Create tag (if not there already)
+        run: |
+          # Check whether gh-pages branch exists, if not, create it now
+          _check_branch=$(git ls-remote --heads origin gh-pages)
+          if [[ -z ${_check_branch} ]]; then
+            git switch --orphan <new branch>
+            git push
+          fi
 
       - uses: actions/checkout@v4
         with:
-          ref: 'main'
-          path: main
+          ref: 'gh-pages'
+          path: pages
 
       - uses: actions/download-artifact@v4
         with:
