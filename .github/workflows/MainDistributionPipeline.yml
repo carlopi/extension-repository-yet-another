@@ -75,3 +75,29 @@ jobs:
           git add -A
           git commit --amend --no-edit
           git push -f
+
+    - uses: actions/upload-artifact@master
+      with:
+        name: page
+        path: pages
+        if-no-files-found: error
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: github_pages
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+      
+    steps:
+    - uses: actions/download-artifact@master
+      with:
+        name: page
+        path: .
+    - uses: actions/configure-pages@v1
+    - uses: actions/upload-pages-artifact@v1
+      with:
+        path: .
+    - id: deployment
+      uses: actions/deploy-pages@main
+
