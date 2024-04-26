@@ -24,6 +24,9 @@ do
 
     duckdb post.db -markdown -c "ATTACH 'pre.db'; FROM ( SELECT * EXCLUDE (install_path, loaded, installed) FROM extensions ORDER BY extension_name) EXCEPT (SELECT * EXCLUDE (install_path, loaded, installed) FROM pre.extensions ORDER BY extension_name) ORDER BY extension_name;" > docs/$extension/extension.md
 
+    rm -f pre.db
+    rm -f post.db
+
     if [ -s "docs/$extension/extension.md" ]; then
        echo "## $extension"
        echo ""
