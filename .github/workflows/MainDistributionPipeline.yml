@@ -76,10 +76,13 @@ jobs:
           git add -A
           git commit --amend --no-edit
           git push -f
+          cd ..
+          tar -cvf pages.tar pages
+          gzip pages.tar
 
       - uses: actions/upload-pages-artifact@v1
         with:
-          path: pages
+          path: pages.tar.gz
           name: github-pages
 
       - id: deployment
