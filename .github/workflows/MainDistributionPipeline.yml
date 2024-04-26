@@ -55,7 +55,7 @@ jobs:
         run: |
           rsync -a build/extension_repository*/* .
           brew install duckdb
-          cp build/boilerplate.md > README.md
+          cat build/boilerplate.md > README.md
           ./build/scripts/generated_docs_readme.sh >> README.md
           git rm -r build
           git config --global user.name 'Carlo Piovesan'
