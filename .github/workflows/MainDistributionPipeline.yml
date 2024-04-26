@@ -42,7 +42,7 @@ jobs:
           _check_branch=$(git ls-remote --heads origin gh-pages)
           if [[ -z ${_check_branch} ]]; then
             git switch --orphan gh-pages
-            git push
+            git push --set-upstream origin gh-pages
           fi
 
       - uses: actions/checkout@v4
