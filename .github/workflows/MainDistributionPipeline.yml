@@ -35,11 +35,16 @@ jobs:
   github_pages:
     name: Publish on Github pages
     needs: duckdb-stable-build
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: 'gh-pages'
+
+      - uses: actions/checkout@v4
+        with:
+          ref: 'main'
+          path: build
 
       - uses: actions/download-artifact@v4
         with:
@@ -49,6 +54,9 @@ jobs:
       - name: Commit report
         run: |
           rsync -a build/extension_repository*/* .
+          brew install duckdb
+          cp build/boilerplate.md > README.md
+          ./build/scripts/generated_docs_readme.sh >> README.md
           git rm -r build
           git config --global user.name 'Carlo Piovesan'
           git config --global user.email 'carlopi@users.noreply.github.com'
