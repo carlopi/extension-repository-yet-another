@@ -76,11 +76,11 @@ jobs:
           git commit --amend --no-edit
           git push -f
 
-    - uses: actions/upload-artifact@master
-      with:
-        name: page
-        path: pages
-        if-no-files-found: error
+      - uses: actions/upload-artifact@master
+        with:
+          name: page
+          path: pages
+          if-no-files-found: error
 
   deploy:
     runs-on: ubuntu-latest
