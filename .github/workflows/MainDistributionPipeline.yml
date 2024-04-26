@@ -39,7 +39,7 @@ jobs:
         run: |
           cd main
           # Check whether gh-pages branch exists, if not, create it now
-          _check_branch=$(git ls-remote --heads gh-pages)
+          _check_branch=$(git ls-remote --heads origin gh-pages)
           if [[ -z ${_check_branch} ]]; then
             git switch --orphan gh-pages
             git push
