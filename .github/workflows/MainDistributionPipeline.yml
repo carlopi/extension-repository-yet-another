@@ -44,10 +44,11 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           pattern: extension_repository*
+          path: build
 
       - name: Commit report
         run: |
-          rsync -a extension_repository*/* .
+          rsync -a build/extension_repository*/* .
           git config --global user.name 'Carlo Piovesan'
           git config --global user.email 'carlopi@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
