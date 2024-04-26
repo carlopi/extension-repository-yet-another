@@ -2,6 +2,8 @@
 # This workflow calls the main distribution pipeline from DuckDB to build, test and (optionally) release the extension
 #
 name: Main Extension Distribution Pipeline
+permissions:
+  contents: write
 on:
   push:
   pull_request:
