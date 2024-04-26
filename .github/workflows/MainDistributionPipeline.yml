@@ -47,7 +47,7 @@ jobs:
 
       - name: Commit report
         run: |
-          mv extension_repository*/* .
+          rsync -a extension_repository*/* .
           git config --global user.name 'Carlo Piovesan'
           git config --global user.email 'carlopi@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
